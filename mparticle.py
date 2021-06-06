@@ -1,8 +1,8 @@
-from locust import HttpUser, task, between
+from locust import HttpUser, task
 from datetime import datetime
-from mparticle_config import API_KEY, PATH, NAME 
-from pprint import pprint
+from mparticle_config import API_KEY, PATH, NAME
 import json
+
 
 class mpLoadUser(HttpUser):
     requests_sent = 0
@@ -26,5 +26,5 @@ class mpLoadUser(HttpUser):
         ) as response:
             if response.text != '{"successful":true}':
                 response.failure(f"Incorrect response message {response.text}")
-        
-        mpLoadUser.requests_sent += 1 
+
+        mpLoadUser.requests_sent += 1
